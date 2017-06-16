@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+public class Lista implements Iterable<Clientes>{
+
+    private ArrayList<Clientes> cl;
+
+    public Lista() {
+        cl = new ArrayList<Clientes>();
+    }
+
+    public void addCliente (Clientes cliente) {
+        cl.add(cliente);
+    }
+
+    public Clientes getCliente (int indice) {
+        return cl.get(indice);
+    }
+
+    public void removeCliente (Clientes cliente) {
+        cl.remove(cliente);
+    }
+
+    public void removeCliente (int indice) {
+        cl.remove(indice);
+    }
+
+    public int size() {
+        return cl.size();
+    }
+
+    // ordenação natural, usando o compareTo da Cliente
+    public void ordenaNomeAZ() {
+        Collections.sort(cl);
+    }
+
+    public Iterator<Clientes> iterator() {
+        return cl.iterator();
+    }
+}
