@@ -11,12 +11,20 @@ public class Main {
         int switches1,switches2,switches3;
         String nomeClienteCa, emailCa, senhaCa; //variáveis que foram cadastradas previamente
         String emailDigi, senhaDigi; //variáveis digitadas no login do cliente
+        
+        String nomeLivro, nomeAutor;
+        float preco; //variáveis de cadastro de livro
+        
+        Scanner NomeLi = new Scanner(System.in);
+        Scanner NomeAut = new Scanner(System.in);
+        Scanner Preco = new Scanner(System.in); //Scanner das variáveis de cadastro de livro
+        
         Scanner nome = new Scanner(System.in);
         Scanner Senha = new Scanner(System.in);
         Scanner Email = new Scanner(System.in); //scanners das variáveis que cadastram o cliente
         
         Scanner SenhaDigitada = new Scanner(System.in);
-        Scanner EmailDigitado = new Scanner(System.in); //scanners qdas variáveis digitadas
+        Scanner EmailDigitado = new Scanner(System.in); //scanners das variáveis digitadas
         do{
             switches1 =Integer.parseInt(JOptionPane.showInputDialog("**** Bem vindo a Loja Virtual Ebook ****\n Menu Inicial\n 0 - Sair\n 1 - Menu Administrativo\n 2 - Menu Cliente" ));
 
@@ -31,6 +39,15 @@ public class Main {
                         case 0:
                             break;
                         case 1:
+                        	System.out.println("Cadastrar livro\n");
+                        	System.out.println("Insira o nome do livro:");
+                        	nomeLivro = NomeLi.next();
+                        	System.out.println("Insira o nome do autor do livro: ");
+                        	nomeAutor = NomeAut.next();
+                        	System.out.println("Insira o valor do livro: ");
+                        	preco = Preco.nextFloat();
+                        	Livros L1 = new Livros(nomeLivro, nomeAutor, preco);
+                        	System.out.println("Livro cadastrado");
                             break;
                         case 2:
                             break;
@@ -48,9 +65,9 @@ public class Main {
                             break;
                         case 1:
                         	System.out.println("Cadastrar cliente\n");
-                        	System.out.println("Digite seu nome:\n");
+                        	System.out.println("Digite seu nome:");
                         	nomeClienteCa = nome.next();
-                        	System.out.println("Digite o seu email:\n");
+                        	System.out.println("Digite o seu email:");
                         	emailCa = Email.next();
                         	System.out.println("Digite uma senha:\n");
                         	senhaCa = Senha.next();
@@ -60,7 +77,7 @@ public class Main {
                         	break;
                         case 2:
                         	System.out.println("Login do Cliente\n");
-                        	System.out.println("Digite o seu email:\n");
+                        	System.out.println("Digite o seu email:");
                         	emailDigi = EmailDigitado.next();
                         	
                         	if (emailDigi == emailCa){
@@ -68,7 +85,7 @@ public class Main {
                         	} else {
                         		System.out.println("Email Incorreto! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
                         	}
-                        	System.out.println("Digite sua senha:\n");
+                        	System.out.println("Digite sua senha:");
                         	senhaDigi = SenhaDigitada.next();
                         	
                         	if (senhaDigi == senhaCa){
