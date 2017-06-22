@@ -1,16 +1,20 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
-public class Lista implements Iterable<Clientes>{
+public class ListaCliente implements Iterable<Clientes>{
 
     private ArrayList<Clientes> cl;
 
-    public Lista() {
+
+    public ListaCliente() {
         cl = new ArrayList<Clientes>();
     }
+
 
     public void addCliente (Clientes cliente) {
         cl.add(cliente);
@@ -19,16 +23,7 @@ public class Lista implements Iterable<Clientes>{
     public Clientes getCliente (int indice) {
         return cl.get(indice);
     }
-
-    public void removeCliente (Clientes cliente) {
-        cl.remove(cliente);
-    }
-
-    public void removeCliente (int indice) {
-        cl.remove(indice);
-    }
-
-    public int size() {
+    public int sizeC() {
         return cl.size();
     }
 
@@ -40,4 +35,5 @@ public class Lista implements Iterable<Clientes>{
     public Iterator<Clientes> iterator() {
         return cl.iterator();
     }
+
 }
