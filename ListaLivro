@@ -1,0 +1,26 @@
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
+public class ListaLivro implements Iterable<Livros> {
+    private ArrayList<Livros> lv;
+
+    public ListaLivro() {
+        lv = new ArrayList<Livros>();
+    }
+
+    public void addLivro (Livros livro) {
+        lv.add(livro);
+    }
+    public Livros getLivro (int indice) {
+        return lv.get(indice);
+    }
+    public int sizeL() { return lv.size(); }
+    public void ordenaLivroAZ() { Collections.sort(lv);}
+
+    public Iterator<Livros> iterator() {
+        return lv.iterator();
+    }
+}
