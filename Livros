@@ -1,0 +1,42 @@
+package Loja_livros;
+
+public class Livros {
+	private String nome;
+	private String autor;
+	float preco;	
+	
+	public Livros(String nome, String autor, float preco){
+		super();
+		this.nome = nome;
+		this.autor = autor;
+		this.preco = preco;
+	}
+	
+	public void setNome(String nome){
+		this.nome = nome;
+	}
+	
+	public String getNome(String nome){
+		return nome;
+	}
+	
+	public void setAutor(String autor){
+		this.autor = autor;
+	}
+	
+	public String getAutor(String autor){
+		return autor;
+	}
+	
+	public void setPreco(float preco){
+		this.preco = preco;
+	}
+	
+	public float getPreco(float preco){
+		return preco;
+	}
+	
+	public String toString(){
+		return nome;
+	}
+}
