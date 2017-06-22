@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
+        ListaCliente lc = new ListaCliente();
+        ListaLivro ll = new ListaLivro();
         int switches1,switches2,switches3;
         String nomeClienteCa, emailCa, senhaCa; //variáveis que foram cadastradas previamente
         String emailDigi, senhaDigi; //variáveis digitadas no login do cliente
@@ -48,10 +50,13 @@ public class Main {
                         	preco = Preco.nextFloat();
                         	Livros L1 = new Livros(nomeLivro, nomeAutor, preco);
                         	System.out.println("Livro cadastrado");
+                            ll.addLivro(L1);
                             break;
                         case 2:
+                            listaTodosLivros(L1);
                             break;
                         case 3:
+                            listaTodosClientes(c1);
                             break;
                         case 4:
                             break;
@@ -73,6 +78,7 @@ public class Main {
                         	senhaCa = Senha.next();
                         	Clientes c1 = new Clientes(nomeClienteCa, emailCa, senhaCa);
                         	System.out.println("Cliente Cadastrado!");
+                            lc.addCliente(c1);
                         	//fazer ele voltar pro menu do cliente automaticamente
                         	break;
                         case 2:
@@ -101,6 +107,27 @@ public class Main {
             }
 
         }while(switches1!=0);
+        
+        }
+         private static void listaTodosClientes(ListaCliente ml ) {
+
+
+        // uso do foreach, pois ListadeContatos implementa Iterable
+        for (Clientes c : ml) {
+            System.out.println(c.getNome() + " (" + c.getEmail() + ")");
+
+        }
+    }
+    private static void listaTodosLivros(ListaLivro lm ) {
+
+
+        // uso do foreach, pois ListadeContatos implementa Iterable
+        for (Livros l : lm) {
+            System.out.println(l.getTitulo() + " (" + l.getAutor() + ")" + "(" + l.getPreco() + ")");
+
+        }
+    }
+        
 
     }
 }
