@@ -53,10 +53,10 @@ public class Main {
                             ll.addLivro(L1);
                             break;
                         case 2:
-                            listaTodosLivros(L1);
+                            listaTodosLivros(ll);
                             break;
                         case 3:
-                            listaTodosClientes(c1);
+                            listaTodosClientes(lc);
                             break;
                         case 4:
                             break;
