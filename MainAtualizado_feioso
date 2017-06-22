@@ -1,0 +1,89 @@
+package Loja_livros;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class Main {
+    public static void main(String[] args) {
+        int switches1,switches2,switches3;
+        String nomeClienteCa, emailCa, senhaCa; //variáveis que foram cadastradas previamente
+        String emailDigi, senhaDigi; //variáveis digitadas no login do cliente
+        Scanner nome = new Scanner(System.in);
+        Scanner Senha = new Scanner(System.in);
+        Scanner Email = new Scanner(System.in); //scanners das variáveis que cadastram o cliente
+        
+        Scanner SenhaDigitada = new Scanner(System.in);
+        Scanner EmailDigitado = new Scanner(System.in); //scanners qdas variáveis digitadas
+        do{
+            switches1 =Integer.parseInt(JOptionPane.showInputDialog("**** Bem vindo a Loja Virtual Ebook ****\n Menu Inicial\n 0 - Sair\n 1 - Menu Administrativo\n 2 - Menu Cliente" ));
+
+            switch(switches1){
+
+                case 0:
+                    break;
+                case 1:
+                    switches2 = Integer.parseInt(JOptionPane.showInputDialog("**** Menu do Administrador ****\n 0 - Voltar\n 1 - Cadastrar livro\n 2 - Listar Livros\n 3 - Listar Clientes\n 4 - Listar Pedidos" ));
+                    switch(switches2) {
+
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
+                    break;
+                case 2:
+                    switches3 = Integer.parseInt(JOptionPane.showInputDialog("**** Menu do Cliente ****\n 0 - Voltar\n 1 - Cadastrar Cliente\n 2 - Login do Cliente" ));
+                    switch(switches3) {
+
+                        case 0:
+                            break;
+                        case 1:
+                        	System.out.println("Cadastrar cliente\n");
+                        	System.out.println("Digite seu nome:\n");
+                        	nomeClienteCa = nome.next();
+                        	System.out.println("Digite o seu email:\n");
+                        	emailCa = Email.next();
+                        	System.out.println("Digite uma senha:\n");
+                        	senhaCa = Senha.next();
+                        	Clientes c1 = new Clientes(nomeClienteCa, emailCa, senhaCa);
+                        	System.out.println("Cliente Cadastrado!");
+                        	//fazer ele voltar pro menu do cliente automaticamente
+                        	break;
+                        case 2:
+                        	System.out.println("Login do Cliente\n");
+                        	System.out.println("Digite o seu email:\n");
+                        	emailDigi = EmailDigitado.next();
+                        	
+                        	if (emailDigi == emailCa){
+                        		System.out.println("Email correto!");
+                        	} else {
+                        		System.out.println("Email Incorreto! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
+                        	}
+                        	System.out.println("Digite sua senha:\n");
+                        	senhaDigi = SenhaDigitada.next();
+                        	
+                        	if (senhaDigi == senhaCa){
+                        		System.out.println("Senha correta!");
+                        	} else {
+                        		System.out.println("Senha Incorreta! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
+                        	}
+                        	
+                            break;
+                    }
+                    break;
+
+            }
+
+        }while(switches1!=0);
+
+    }
+}
