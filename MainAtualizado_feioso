@@ -102,6 +102,74 @@ public class Main {
                         	if (senhaDigi == c.getSenha()
                         			){
                         		System.out.println("Senha correta!");
+                                System.out.println("Senha correta!");
+                        		System.out.println("0 - logoff");
+                        		System.out.println("1 – Procurar livros por título");
+                        		System.out.println("2 - Procurar livros lista geral");
+                        		System.out.println("3 – Fechar pedido");
+                        		System.out.println("4 – Listar pedidos");
+                        		
+                
+                        		
+                        		switch(switches4){
+                        		
+                        		case 0:
+                        			break;
+                        		case 1:
+                        		
+                        			System.out.println("digite o titulo do livro: ");
+                        			Searchlv = searchLivro.next();
+                      
+                        			for (int i = 0; i < ll.size(); i++) {
+                        				
+                        				Livros l = ll.getLivro(i);
+                        				if(Searchlv == l.getTitulo()){
+                        					System.out.println("titulo: " + l.getTitulo + "autor: " + l.getAutor());
+                        				}else {
+                        					System.out.println("Livro nao encontrado!!");
+                        				}
+                        		
+								}
+                        		
+                        		break;
+                        		
+                        		case 2 :
+                        			
+                        			listaTodosLivros(ll);
+                       
+                        			break;
+                        			
+                        		case 3:
+                        			
+                        			
+                        			
+                        			
+                        			break;
+                        			
+                        		case 4:
+                        			
+                        			
+                        			break;
+                        			
+                        		}
+                        		
+                        		
+                        		
+                        		
+                        		
+                        	} else {
+                        		System.out.println("Senha Incorreta! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
+                        	}
+                        	
+                            break;
+                        	}
+                        	
+                        
+                    }
+                    break;
+
+            }
+
                         	} else {
                         		System.out.println("Senha Incorreta! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
                         	}
