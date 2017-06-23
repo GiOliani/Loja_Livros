@@ -1,0 +1,39 @@
+public class Pedidos {
+	
+	private Clientes clt;
+	private Livros lvr;
+	
+	
+	public Pedidos(Clientes clt, Livros lvr) {
+		super();
+		this.clt = clt;
+		this.lvr = lvr;
+	}
+
+
+	public Clientes getCl() {
+		return clt;
+	}
+
+
+	public void setCl(Clientes clt) {
+		this.clt = clt;
+	}
+
+
+	public Livros getLvr() {
+		return lvr;
+	}
+
+
+	public void setLv(Livros lvr) {
+		this.lvr = lvr;
+	}
+	
+	
+	
+	
+	
+	
+
+}
