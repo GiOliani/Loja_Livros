@@ -9,182 +9,111 @@ public class Main {
         ListaCliente lc = new ListaCliente();
         ListaLivro ll = new ListaLivro();
         int switches1,switches2,switches3;
+        Scanner sw = new Scanner(System.in);
         String nomeClienteCa, emailCa, senhaCa; //variáveis que foram cadastradas previamente
         String emailDigi, senhaDigi; //variáveis digitadas no login do cliente
-        
+
         String nomeLivro, nomeAutor;
         float preco; //variáveis de cadastro de livro
-        
+
         Scanner NomeLi = new Scanner(System.in);
         Scanner NomeAut = new Scanner(System.in);
         Scanner Preco = new Scanner(System.in); //Scanner das variáveis de cadastro de livro
-        
+
         Scanner nome = new Scanner(System.in);
         Scanner Senha = new Scanner(System.in);
         Scanner Email = new Scanner(System.in); //scanners das variáveis que cadastram o cliente
-        
+
         Scanner SenhaDigitada = new Scanner(System.in);
         Scanner EmailDigitado = new Scanner(System.in); //scanners das variáveis digitadas
         do{
-           System.out.println("****Bem vindo a Loja Virtual Ebook ****\n");
-        	System.out.println("Menu Inicial\n 0 - Sair\n 1 - Menu Administrador\n 2 - Menu Cliente");
-            
+            System.out.println(("**** Bem vindo a Loja Virtual Ebook ****\n Menu Inicial\n 0 - Sair\n 1 - Menu Administrativo\n 2 - Menu Cliente" ));
+            switches1 = sw.nextInt();
             switch(switches1){
 
                 case 0:
                     break;
                 case 1:
-                    System.out.println("Menu Administrador\n")
+                    System.out.println(("**** Menu do Administrador ****\n 0 - Voltar\n 1 - Cadastrar livro\n 2 - Listar Livros\n 3 - Listar Clientes\n 4 - Listar Pedidos" ));
+                    switches2 = sw.nextInt();
                     switch(switches2) {
 
                         case 0:
-                            System.out.println("Sair\n");
                             break;
                         case 1:
-                        	System.out.println("Cadastrar livro\n");
-                        	System.out.println("Insira o nome do livro:");
-                        	nomeLivro = NomeLi.next();
-                        	System.out.println("Insira o nome do autor do livro: ");
-                        	nomeAutor = NomeAut.next();
-                        	System.out.println("Insira o valor do livro: ");
-                        	preco = Preco.nextFloat();
-                        	Livros L1 = new Livros(nomeLivro, nomeAutor, preco);
-                        	System.out.println("Livro cadastrado");
+                            System.out.println("Cadastrar livro\n");
+                            System.out.println("Insira o nome do livro:");
+                            nomeLivro = NomeLi.next();
+                            System.out.println("Insira o nome do autor do livro: ");
+                            nomeAutor = NomeAut.next();
+                            System.out.println("Insira o valor do livro: ");
+                            preco = Preco.nextFloat();
+                            Livros L1 = new Livros(nomeLivro, nomeAutor, preco);
+                            System.out.println("Livro cadastrado");
                             ll.addLivro(L1);
                             break;
                         case 2:
-                            System.out.println("Listar todos os livros\n");
                             listaTodosLivros(ll);
                             break;
                         case 3:
-                            System.out.println("Listar todos os clientes\n");
                             listaTodosClientes(lc);
                             break;
                         case 4:
-                            System.out.println("Listar todos os pedidos\n");
                             break;
                     }
                     break;
                 case 2:
-                    System.out.println("Menu Cliente\n");
+                    System.out.println(("**** Menu do Cliente ****\n 0 - Voltar\n 1 - Cadastrar Cliente\n 2 - Login do Cliente" ));
+                    switches3 = sw.nextInt();
                     switch(switches3) {
 
                         case 0:
                             break;
                         case 1:
-                        	System.out.println("Cadastrar cliente\n");
-                        	System.out.println("Digite seu nome:");
-                        	nomeClienteCa = nome.next();
-                        	System.out.println("Digite o seu email:");
-                        	emailCa = Email.next();
-                        	System.out.println("Digite uma senha:\n");
-                        	senhaCa = Senha.next();
-                        	Clientes c1 = new Clientes(nomeClienteCa, emailCa, senhaCa);
-                        	System.out.println("Cliente Cadastrado!");
+                            System.out.println("Cadastrar cliente\n");
+                            System.out.println("Digite seu nome:");
+                            nomeClienteCa = nome.next();
+                            System.out.println("Digite o seu email:");
+                            emailCa = Email.next();
+                            System.out.println("Digite uma senha:\n");
+                            senhaCa = Senha.next();
+                            Clientes c1 = new Clientes(nomeClienteCa, emailCa, senhaCa);
+                            System.out.println("Cliente Cadastrado!");
                             lc.addCliente(c1);
-                        	//fazer ele voltar pro menu do cliente automaticamente
-                        	break;
+                            //fazer ele voltar pro menu do cliente automaticamente
+                            break;
                         case 2:
-                        	System.out.println("Login do Cliente\n");
-                        	System.out.println("Digite o seu email:");
-                        	emailDigi = EmailDigitado.next();
-                        	for(int x = 0; x < cl.size(); x++){ 
-                        		 c = cl.getCliente(x);
-                        	if (emailDigi == c.getEmail()){
-                        		System.out.println("Email correto!");
-                        	} else {
-                        		System.out.println("Email Incorreto! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
-                        	}
-                        	
-                        	System.out.println("Digite sua senha:");
-                        	senhaDigi = SenhaDigitada.next();
-                        	
-                        	if (senhaDigi == c.getSenha()
-                        			){
-                        		System.out.println("Senha correta!");
-                                System.out.println("Senha correta!");
-                        		System.out.println("0 - logoff");
-                        		System.out.println("1 – Procurar livros por título");
-                        		System.out.println("2 - Procurar livros lista geral");
-                        		System.out.println("3 – Fechar pedido");
-                        		System.out.println("4 – Listar pedidos");
-                        		
-                
-                        		
-                        		switch(switches4){
-                        		
-                        		case 0:
-                        			break;
-                        		case 1:
-                        		
-                        			System.out.println("digite o titulo do livro: ");
-                        			Searchlv = searchLivro.next();
-                      
-                        			for (int i = 0; i < ll.size(); i++) {
-                        				
-                        				Livros l = ll.getLivro(i);
-                        				if(Searchlv == l.getTitulo()){
-                        					System.out.println("titulo: " + l.getTitulo + "autor: " + l.getAutor());
-                        				}else {
-                        					System.out.println("Livro nao encontrado!!");
-                        				}
-                        		
-								}
-                        		
-                        		break;
-                        		
-                        		case 2 :
-                        			
-                        			listaTodosLivros(ll);
-                       
-                        			break;
-                        			
-                        		case 3:
-                        			
-                        			
-                        			
-                        			
-                        			break;
-                        			
-                        		case 4:
-                        			
-                        			
-                        			break;
-                        			
-                        		}
-                        		
-                        		
-                        		
-                        		
-                        		
-                        	} else {
-                        		System.out.println("Senha Incorreta! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
-                        	}
-                        	
-                            break;
-                        	}
-                        	
-                        
-                    }
-                    break;
+                            System.out.println("Login do Cliente\n");
+                            System.out.println("Digite o seu email:");
+                            emailDigi = EmailDigitado.next();
+                            for(int x = 0; x < lc.sizeC(); x++){
+                                Clientes c = lc.getCliente(x);
+                                if (emailDigi.compareToIgnoreCase(c.getEmail())==0){
+                                    System.out.println("Email correto!");
+                                } else {
+                                    System.out.println("Email Incorreto! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
+                                }
 
-            }
+                                System.out.println("Digite sua senha:");
+                                senhaDigi = SenhaDigitada.next();
 
-                        	} else {
-                        		System.out.println("Senha Incorreta! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
-                        	}
-                        	
-                            break;
-                        	}
+                                if (senhaDigi.compareToIgnoreCase(c.getSenha())==0){
+                                    System.out.println("Senha correta!");
+                                } else {
+                                    System.out.println("Senha Incorreta! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
+                                }
+
+                                break;
+                            }
                     }
                     break;
 
             }
 
         }while(switches1!=0);
-        
-        }
-         private static void listaTodosClientes(ListaCliente ml ) {
+
+    }
+    private static void listaTodosClientes(ListaCliente ml ) {
 
 
         // uso do foreach, pois ListadeContatos implementa Iterable
@@ -202,6 +131,6 @@ public class Main {
 
         }
     }
-        
 
-    }
+
+}
