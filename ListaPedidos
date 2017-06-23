@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+	import java.util.Collections;
+	import java.util.Iterator;
+
+	public class ListaPedidos implements Iterable<Pedidos> {
+	    private ArrayList<Pedidos> pd;
+
+	    public ListaPedidos() {
+	        pd = new ArrayList<Pedidos>();
+	    }
+
+	    public void addPedido (Pedidos pedidos) {
+	        pd.add(pedidos);
+	    }
+	    public Pedidos getPedido (int indice) {
+	        return pd.get(indice);
+	    }
+	    public int sizeL() { return pd.size(); }
+	    public void ordenaLivroAZ() { Collections.sort(pd);}
+
+	    public Iterator<Pedidos> iterator() {
+	        return pd.iterator();
+	    }
+	}
+
