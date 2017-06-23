@@ -1,5 +1,3 @@
-package Loja_livros;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JButton;
@@ -85,22 +83,26 @@ public class Main {
                         	System.out.println("Login do Cliente\n");
                         	System.out.println("Digite o seu email:");
                         	emailDigi = EmailDigitado.next();
-                        	
-                        	if (emailDigi == emailCa){
+                        	for(int x = 0; x < cl.size(); x++){ 
+                        		 c = cl.getCliente(x);
+                        	if (emailDigi == c.getEmail()){
                         		System.out.println("Email correto!");
                         	} else {
                         		System.out.println("Email Incorreto! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
                         	}
+                        	
                         	System.out.println("Digite sua senha:");
                         	senhaDigi = SenhaDigitada.next();
                         	
-                        	if (senhaDigi == senhaCa){
+                        	if (senhaDigi == c.getSenha()
+                        			){
                         		System.out.println("Senha correta!");
                         	} else {
                         		System.out.println("Senha Incorreta! Digite novamente.\n"); //só colocar dentro de um Do para que peça o email sempre que errar o email
                         	}
                         	
                             break;
+                        	}
                     }
                     break;
 
@@ -130,4 +132,3 @@ public class Main {
         
 
     }
-}
