@@ -1,6 +1,3 @@
-
-package Loja_livros;
-
 public class Clientes implements Comparable<Clientes>{
     private String nome;
     private String email;
@@ -21,20 +18,20 @@ public class Clientes implements Comparable<Clientes>{
         this.nome = nome;
     }
 
-    public String getEmail() { 
-    	return email;
-    	}
-    
-    public void setEmail(String email) { 
-    	this.email = email;  
+    public String getEmail() {
+        return email;
     }
-    
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setSenha(String senha){
-    	this.senha = senha;
+        this.senha = senha;
     }
-    
-    public String getSenha(String senha){
-    	return senha;
+
+    public String getSenha(){
+        return senha;
     }
 
     public String toString(){
