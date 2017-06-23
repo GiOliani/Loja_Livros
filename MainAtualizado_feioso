@@ -3,6 +3,10 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,11 +14,14 @@ public class Main {
         ListaLivro ll = new ListaLivro();
         int switches1, switches2, switches3, switches4;
         Scanner sw = new Scanner(System.in);
-        String nomeClienteCa, emailCa, senhaCa; //variáveis que foram cadastradas previamente
+        String nomeClienteCa, emailCa, senhaCa, cartao; //variáveis que foram cadastradas previamente
         String emailDigi, senhaDigi; //variáveis digitadas no login do cliente
 
         String nomeLivro, nomeAutor;
         double preco; //variáveis de cadastro de livro
+        
+        GregorianCalendar call = new GregorianCalendar();
+        Date h = new Date();
 
         String titlivro; // variável de procura do titulo do livro
 
@@ -134,10 +141,30 @@ public class Main {
 
 
                                                 case 2:
+                                                	for (int i2 = 0; i2 < ll.sizeL(); i2++) {
+                                                		Livros l = ll.getLivro(i2);
+                                                		System.out.println((i2+1) + " -- " + l.getTitulo() + " (" + l.getAutor() + ")" + "(" + l.getPreco() + ")");
+                                                		System.out.println("digite o numero do livro que deseja ou precione 0 para voltar ");
+                                                		int escolha = sw.nextInt();
+                                                		if(escolha == 0){
+                                                			break;
+                                                		}else{
+                                                			Livros l2 = ll.getLivro(escolha - 1);
+                                                			 car.adiciona(l2);
+                                                		}
+                                                		break;
+														
+													}
                                                     break;
                                                 case 3:
+                                                	System.out.println("digite o numero no cartao"); 
+                                                	cartao = sw.next();
+                                                	SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+                                                	
                                                     break;
                                                 case 4:
+                                                
+                                                	
                                                     break;
                                             }
                                         }while(switches4!=0);
