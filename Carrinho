@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Carrinho {
+
+    private List<Livros> itens = new ArrayList<Livros>();
+
+    private Double total = 0.0;
+
+        public Integer getTotalDeItens() {
+        return itens.size();
+    }
+
+    public void remove(int indiceItem) {
+        Livros removido = itens.remove(indiceItem);
+        total -= removido.getPreco();
+    }
+
+    public List<Livros> getItens() {
+        return itens;
+    }
+
+    public void adiciona(Livros novoLivro) {
+        this.getItens().add(novoLivro);
+        total += novoLivro.getPreco();
+    }
+
+    public void setItens(List<Livros> itens) {
+        this.itens = itens;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+}
