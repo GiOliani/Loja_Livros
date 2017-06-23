@@ -1,42 +1,44 @@
-package Loja_livros;
 
-public class Livros {
-	private String nome;
-	private String autor;
-	float preco;	
-	
-	public Livros(String nome, String autor, float preco){
-		super();
-		this.nome = nome;
-		this.autor = autor;
-		this.preco = preco;
-	}
-	
-	public void setNome(String nome){
-		this.nome = nome;
-	}
-	
-	public String getNome(String nome){
-		return nome;
-	}
-	
-	public void setAutor(String autor){
-		this.autor = autor;
-	}
-	
-	public String getAutor(String autor){
-		return autor;
-	}
-	
-	public void setPreco(float preco){
-		this.preco = preco;
-	}
-	
-	public float getPreco(float preco){
-		return preco;
-	}
-	
-	public String toString(){
-		return nome;
-	}
+public class Livros implements Comparable<Livros> {
+private String titulo;
+private String autor;
+private double preco;
+
+    public Livros(String titulo, String autor, double preco) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.preco = preco;
+    }
+    public Livros(String titulo, double preco)
+    {
+        this.titulo =titulo;
+        this.preco = preco;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+    public int compareTo(Livros l) {
+        return titulo.compareToIgnoreCase(l.getTitulo());
+    }
 }
