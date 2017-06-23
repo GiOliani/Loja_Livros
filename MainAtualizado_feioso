@@ -26,17 +26,19 @@ public class Main {
         Scanner SenhaDigitada = new Scanner(System.in);
         Scanner EmailDigitado = new Scanner(System.in); //scanners das variáveis digitadas
         do{
-            switches1 =Integer.parseInt(JOptionPane.showInputDialog("**** Bem vindo a Loja Virtual Ebook ****\n Menu Inicial\n 0 - Sair\n 1 - Menu Administrativo\n 2 - Menu Cliente" ));
-
+           System.out.println("****Bem vindo a Loja Virtual Ebook ****\n");
+        	System.out.println("Menu Inicial\n 0 - Sair\n 1 - Menu Administrador\n 2 - Menu Cliente");
+            
             switch(switches1){
 
                 case 0:
                     break;
                 case 1:
-                    switches2 = Integer.parseInt(JOptionPane.showInputDialog("**** Menu do Administrador ****\n 0 - Voltar\n 1 - Cadastrar livro\n 2 - Listar Livros\n 3 - Listar Clientes\n 4 - Listar Pedidos" ));
+                    System.out.println("Menu Administrador\n")
                     switch(switches2) {
 
                         case 0:
+                            System.out.println("Sair\n");
                             break;
                         case 1:
                         	System.out.println("Cadastrar livro\n");
@@ -51,17 +53,20 @@ public class Main {
                             ll.addLivro(L1);
                             break;
                         case 2:
+                            System.out.println("Listar todos os livros\n");
                             listaTodosLivros(ll);
                             break;
                         case 3:
+                            System.out.println("Listar todos os clientes\n");
                             listaTodosClientes(lc);
                             break;
                         case 4:
+                            System.out.println("Listar todos os pedidos\n");
                             break;
                     }
                     break;
                 case 2:
-                    switches3 = Integer.parseInt(JOptionPane.showInputDialog("**** Menu do Cliente ****\n 0 - Voltar\n 1 - Cadastrar Cliente\n 2 - Login do Cliente" ));
+                    System.out.println("Menu Cliente\n");
                     switch(switches3) {
 
                         case 0:
