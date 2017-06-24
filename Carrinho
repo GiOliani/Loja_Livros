@@ -36,4 +36,16 @@ public class Carrinho {
     public void setTotal(Double total) {
         this.total = total;
     }
+    String getTodosOsLivrosEmFormaDeLista()
+    {
+        String todosOsLivros = "";
+        String header1 = " ---- Livros no Carrinho ----\n";
+        String header2 = "Titulo ---- Preco\n";
+        todosOsLivros += header1 + header2;
+        for(Livros l: this.getItens())
+        {
+            todosOsLivros += l.getTitulo() + "-" + l.getPreco() + "\n";
+        }
+        return todosOsLivros;
+    }
 }
