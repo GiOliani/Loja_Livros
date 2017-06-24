@@ -1,19 +1,27 @@
+package Loja_livros;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ListaCliente lc = new ListaCliente();
         ListaLivro ll = new ListaLivro();
         ListaPedidos lp = new ListaPedidos();
         int switches1, switches2, switches3, switches4;
+        int z = 0, a = 0;
         Scanner sw = new Scanner(System.in);
         String nomeClienteCa, emailCa, senhaCa, cartao; //variáveis que foram cadastradas previamente
         String emailDigi, senhaDigi; //variáveis digitadas no login do cliente
@@ -55,15 +63,30 @@ public class Main {
                                 break;
                             case 1:
                                 System.out.println("Cadastrar livro\n");
-                                System.out.println("Insira o nome do livro:");
-                                nomeLivro = NomeLi.next();
-                                System.out.println("Insira o nome do autor do livro: ");
-                                nomeAutor = NomeAut.next();
-                                System.out.println("Insira o valor do livro: ");
-                                preco = Preco.nextDouble();
-                                Livros L1 = new Livros(nomeLivro, nomeAutor, preco);
-                                System.out.println("Livro cadastrado");
-                                ll.addLivro(L1);
+                                try{
+                                    File file = new File("C:\\POO\\livros.txt");
+                                    FileWriter arq = new FileWriter("C:\\POO\\livros.txt");
+                                    PrintWriter gravarArq = new PrintWriter(arq);
+                                    System.out.println("Insira o nome do livro:");
+                                    nomeLivro = NomeLi.next();
+                                    System.out.println("Insira o nome do autor do livro: ");
+                                    nomeAutor = NomeAut.next();
+                                    System.out.println("Insira o valor do livro: ");
+                                    preco = Preco.nextDouble();
+                                    Livros L1 = new Livros(nomeLivro, nomeAutor, preco);
+                                    System.out.println("Livro cadastrado");
+                                    ll.addLivro(L1);
+                                    for(int z=0; z <ll.sizeL(); z++) {
+                                        Livros livros = ll.getLivro(z);
+                                        gravarArq.print(livros.getTitulo()+"\n");
+                                    }
+                                    arq.close();
+
+                                }catch(FileNotFoundException e){
+                                    System.out.println("Erro\n");
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                                 break;
                             case 2:
                                 listaTodosLivros(ll);
@@ -72,8 +95,6 @@ public class Main {
                                 listaTodosClientes(lc);
                                 break;
                             case 4:
-                            	listaTodosPedidosc(lp);
-                            	
                                 break;
                         }
                     }while(switches2!=0);
@@ -87,16 +108,34 @@ public class Main {
                             case 0:
                                 break;
                             case 1:
-                                System.out.println("Cadastrar cliente\n");
-                                System.out.println("Digite seu nome:");
-                                nomeClienteCa = nome.next();
-                                System.out.println("Digite o seu email:");
-                                emailCa = Email.next();
-                                System.out.println("Digite uma senha:\n");
-                                senhaCa = Senha.next();
-                                Clientes c1 = new Clientes(nomeClienteCa, emailCa, senhaCa);
-                                System.out.println("Cliente Cadastrado!");
-                                lc.addCliente(c1);
+                            	
+                            	
+                            	try{
+                                    File file = new File("C:\\POO\\clientes.txt");
+                                    FileWriter arq2 = new FileWriter("C:\\POO\\clientes.txt");
+                                    PrintWriter gravarArq = new PrintWriter(arq2);
+                                    System.out.println("Digite seu nome:");
+                                    nomeClienteCa = nome.next();
+                                    System.out.println("Digite o seu email: ");
+                                    emailCa = Email.next();
+                                    System.out.println("Digite uma senha:\n ");
+                                    senhaCa = Senha.next();
+                                    Clientes c1 = new Clientes(nomeClienteCa, emailCa, senhaCa);
+                                    System.out.println("Cliente cadastrado");
+                                    lc.addCliente(c1);
+                                    for(int a=0; a <lc.sizeC(); a++) {
+                                        Clientes cliente = lc.getCliente(a);
+                                        gravarArq.print(cliente.getNome()+"\n");
+                                    }
+                                    arq2.close();
+
+                                }catch(FileNotFoundException e1){
+                                    System.out.println("Erro\n");
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();
+                                }
+                            	
+         
                                 //fazer ele voltar pro menu do cliente automaticamente
                                 break;
                             case 2:
@@ -121,11 +160,9 @@ public class Main {
                                                     titlivro = LivroTit.next();
                                                     for (int y = 0; y < ll.sizeL(); y++) {
                                                         Livros l = ll.getLivro(y);
-                                                       
                                                         if (titlivro.compareToIgnoreCase(l.getTitulo()) == 0) {
                                                             System.out.println("Livro encontrado: " + l.getTitulo() + " --- R$:" + l.getPreco());
                                                             System.out.println("Deseja adiciona-lo ao carrinho?\n0 - SIM\n1 - NÃO");
-                                                           
                                                             int switches5 = sw.nextInt();
                                                             switch (switches5) {
                                                                 case 0:
@@ -143,7 +180,6 @@ public class Main {
                                                             break;
                                                         }
                                                     }
-                                                    
 
 
                                                 case 2:
@@ -151,7 +187,6 @@ public class Main {
                                                 		Livros l = ll.getLivro(i2);
                                                 		System.out.println((i2+1) + " -- " + l.getTitulo() + " (" + l.getAutor() + ")" + "(" + l.getPreco() + ")");
                                                 		System.out.println("digite o numero do livro que deseja ou precione 0 para voltar ");
-                                                	}
                                                 		int escolha = sw.nextInt();
                                                 		if(escolha == 0){
                                                 			break;
@@ -161,18 +196,16 @@ public class Main {
                                                 		}
                                                 		break;
 														
-													
-                                               
+													}
+                                                    break;
                                                 case 3:
-                                                	 System.out.println(car.getTodosOsLivrosEmFormaDeLista());
                                                 	System.out.println("digite o numero no cartao"); 
                                                 	cartao = sw.next();
-                                                	Pedidos p = new Pedidos (c, car);
+                                                	Pedidos p = new Pedidos(c, car);
                                                 	lp.addPedido(p);
                                                 
                                                     break;
                                                 case 4:
-                                                System.out.println(car.getTodosOsLivrosEmFormaDeLista());
                                                 
                                                 	
                                                     break;
@@ -207,26 +240,6 @@ public class Main {
         // uso do foreach, pois ListadeContatos implementa Itera ble
         for (Livros l : lm) {
             System.out.println(l.getTitulo() + " (" + l.getAutor() + ")" + "(" + l.getPreco() + ")");
-
-        }
-    }
-    
-    private static void listaTodosPedidos(ListaPedidos llp ) {
-
-
-        // uso do foreach, pois ListadeContatos implementa Itera ble
-        for (Pedidos p : llp) {
-            System.out.println(p.getCl().getNome() + " " + p.getCar().getTodosOsLivrosEmFormaDeLista() );
-
-        }
-    }
-    
-    private static void listaTodosPedidosc(ListaPedidos llp ) {
-
-
-        // uso do foreach, pois ListadeContatos implementa Itera ble
-        for (Pedidos p : llp) {
-            System.out.println(p.getCl().getNome() + " " + p.getCar().getTodosOsLivrosEmFormaDeListaC() );
 
         }
     }
