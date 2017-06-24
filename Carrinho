@@ -21,7 +21,7 @@ public class Carrinho {
     }
 
     public void adiciona(Livros novoLivro) {
-        this.getItens().add(novoLivro);
+        getItens().add(novoLivro);
         total += novoLivro.getPreco();
     }
 
@@ -48,4 +48,20 @@ public class Carrinho {
         }
         return todosOsLivros;
     }
+    
+    String getTodosOsLivrosEmFormaDeListaC()
+    {
+        String todosOsLivros = "";
+        
+        for(Livros l: this.getItens())
+        {
+            todosOsLivros += l.getTitulo() + "-" + l.getPreco() + "\n";
+        }
+        return todosOsLivros;
+    }
+
+
 }
+
+
+
