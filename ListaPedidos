@@ -1,6 +1,9 @@
 import java.util.ArrayList;
-	import java.util.Collections;
-	import java.util.Iterator;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
 
 	public class ListaPedidos implements Iterable<Pedidos> {
 	    private ArrayList<Pedidos> pd;
@@ -12,12 +15,19 @@ import java.util.ArrayList;
 	    public void addPedido (Pedidos pedidos) {
 	        pd.add(pedidos);
 	    }
+	    public void removeContato (Pedidos pedidos) {
+			pd.remove(pedidos);
+		}
+
 	    public Pedidos getPedido (int indice) {
 	        return pd.get(indice);
 	    }
-	    public int sizeL() { return pd.size(); }
-	    public void ordenaLivroAZ() { Collections.sort(pd);}
+	    public int sizeL() {
+	    	return pd.size(); 
+	    	}
 
+
+	   
 	    public Iterator<Pedidos> iterator() {
 	        return pd.iterator();
 	    }
