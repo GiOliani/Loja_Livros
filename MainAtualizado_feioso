@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         ListaCliente lc = new ListaCliente();
         ListaLivro ll = new ListaLivro();
+        ListaPedidos lp = new ListaPedidos();
         int switches1, switches2, switches3, switches4;
         Scanner sw = new Scanner(System.in);
         String nomeClienteCa, emailCa, senhaCa, cartao; //variáveis que foram cadastradas previamente
@@ -159,8 +160,9 @@ public class Main {
                                                 case 3:
                                                 	System.out.println("digite o numero no cartao"); 
                                                 	cartao = sw.next();
-                                                	SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-                                                	
+                                                	Pedidos p = new Pedidos (c, car);
+                                                	lp.addPedido(p);
+                                                
                                                     break;
                                                 case 4:
                                                 
@@ -194,7 +196,7 @@ public class Main {
     private static void listaTodosLivros(ListaLivro lm ) {
 
 
-        // uso do foreach, pois ListadeContatos implementa Iterable
+        // uso do foreach, pois ListadeContatos implementa Itera ble
         for (Livros l : lm) {
             System.out.println(l.getTitulo() + " (" + l.getAutor() + ")" + "(" + l.getPreco() + ")");
 
